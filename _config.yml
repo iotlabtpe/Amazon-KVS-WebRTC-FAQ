@@ -1,0 +1,19 @@
+theme: jekyll-theme-minimal
+
+port: 4200
+
+language: english
+
+title: IoT Lab KVS WebRTC Q&A
+
+description: IoT Lab KVS WebRTC Q&A
+
+logo: https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1280px-Amazon_Web_Services_Logo.svg.png
+
+favicon: ./assets/favicon.ico
+
+# destination: ../docs
+
+# show_downloads: true
+
+# run jekyll with: bundle exec jekyll serve
