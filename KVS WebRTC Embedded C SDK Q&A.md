@@ -57,3 +57,15 @@ Check this [Workshop: Connect Amazon KVS WebRTC with AWS IoT](https://iotlabtpe.
 ## How to solve Error: "Signature not yet current: xxxxx is still later than xxxxxxxx + 5 min."?
 
 This could happen on devices set with incorrect system time. You need to synchronize your system time with UTC via `date -s`.
+
+## Does KVS WebRTC SDK support dynamic video bitrate/resolution?
+
+KVS WebRTC SDK supports dynamic bitrate/resolution on the fly, since H.264 SPS contains video bitrate/resolution information. If both the encoder and decoder support dynamic video bitrate/resolution, change video bitrate/resolution will work on the fly.
+
+## How can I troubleshoot latency issues?
+
+In normal case KVS WebRTC can provide real-time video/audio communication with low latency, if you observed abnormal latency issues:
+
+1. Make sure the video/audio frames provided to KVS WebRTC have correct timestamp.
+2. Try to reduce `DEFAULT_ROLLING_BUFFER_DURATION_IN_SECONDS` at [Rtp.h](https://github.com/awslabs/amazon-kinesis-video-streams-webrtc-sdk-c/blob/8b8b2bdf064f6cb2b6495339d31efc3518b12eb9/src/source/PeerConnection/Rtp.h)
+3. For some devices with limited cpu resources, log module might impact KVS WebRTC SDK performance. Try to set log level to `LOG_LEVEL_ERROR` or `LOG_LEVEL_SILENT`.
