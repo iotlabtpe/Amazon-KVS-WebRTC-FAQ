@@ -69,3 +69,28 @@ In normal case KVS WebRTC can provide real-time video/audio communication with l
 1. Make sure the video/audio frames provided to KVS WebRTC have correct timestamp.
 2. Try to reduce `DEFAULT_ROLLING_BUFFER_DURATION_IN_SECONDS` at [Rtp.h](https://github.com/awslabs/amazon-kinesis-video-streams-webrtc-sdk-c/blob/8b8b2bdf064f6cb2b6495339d31efc3518b12eb9/src/source/PeerConnection/Rtp.h)
 3. For some devices with limited cpu resources, log module might impact KVS WebRTC SDK performance. Try to set log level to `LOG_LEVEL_ERROR` or `LOG_LEVEL_SILENT`.
+
+## How can I monitor cloud side metrics?
+
+There are several metrics available on [AWS Cloud watch]( https://docs.aws.amazon.com/kinesisvideostreams-webrtc-dg/latest/devguide/kvswebrtc-monitoring-cw.html)
+
+Signaling:
+   - ConnectAsMaster
+   - ConnectAsViewer
+   - SendSdpOffer
+   - SendSdpAnswer
+   - SendCandidate
+   - SendAlexaOfferToMaster
+   - GetIceServerConfig
+   - Disconnect
+
+Those metrics could be used to troubleshoot connection issues.
+
+TURN:
+   - TURNConnectedMinutes
+
+This metrics could be used to track charges.
+
+## How can I connect Amazon KVS WebRTC with Alexa Echo Show?
+
+Alexa provides an interface `Alexa.RTCSessionController` in [Smart Home Skills](https://developer.amazon.com/en-US/docs/alexa/device-apis/alexa-rtcsessioncontroller.html). By implementing skills with `Alexa.RTCSessionController`, user could connect Amazon KVS WebRTC with Alexa Echo Show.
